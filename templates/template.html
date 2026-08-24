@@ -4,42 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ name }} | Portfolio</title>
+  
+  <!-- Updated link for Flask to find style.css inside the static folder -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
-  <div class="glow-orb orb-3"></div>
-
-  <nav class="navbar">
-    <div class="logo">⚡</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-    </div>
-  </nav>
-
   <div class="container">
-    <header class="header" id="about">
-      <div class="profile-wrapper">
-        <div class="profile-glow"></div>
-        <div class="profile-pic">👨‍💻</div>
-      </div>
+    <header class="header">
+      <h1>{{ name }}</h1>
+      {% if headline %}<p class="headline">{{ headline }}</p>{% endif %}
+      {% if summary %}<p class="summary">{{ summary }}</p>{% endif %}
       
-      <p class="greeting">Hello! I am <span class="highlight">{{ name }}</span></p>
-      <h1>A professional who <br> <span class="gradient-text">Judges a book by its cover...</span></h1>
-      
-      <!-- Blinking cursor removed here -->
-      {% if headline %}
-        <h2 class="typewriter-text">I'm a {{ headline }}</h2> 
-      {% endif %}
-      
-      {% if summary %}
-        <p class="summary">{{ summary }}</p>
-      {% endif %}
-
       {% if contact and contact|length > 0 %}
       <div class="contact-links">
         {% for item in contact %}
@@ -54,83 +29,87 @@
     </header>
 
     <main>
-      {% if experience and experience|length > 0 %}
-      <section class="section" id="experience">
-        <h3 class="section-title">Work Experience</h3>
-        <div class="grid-2col">
-          {% for job in experience %}
-            <div class="glass-card tilt-card">
-              <div class="card-icon">💼</div>
-              <div class="card-content">
-                <h4>{{ job.role }}</h4>
-                <span class="meta">{{ job.company }} | {{ job.duration }}</span>
-                {% if job.responsibilities %}
-                  <p class="small-text">{{ job.responsibilities[0] }}</p>
-                {% endif %}
-                <button class="card-btn">Learn More</button>
-              </div>
-            </div>
+      {% if skills and skills|length > 0 %}
+      <section class="card">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          {% for skill in skills %}
+            <span class="skill-tag">{{ skill }}</span>
           {% endfor %}
         </div>
       </section>
       {% endif %}
 
-      {% if skills and skills|length > 0 %}
-      <section class="section text-center">
-        <p class="pre-title">I'm currently looking to join a <span class="highlight">cross-functional</span> team</p>
-        <p class="sub-title">that values improving people's lives through accessible design.</p>
-        <div class="skills-dock">
-          {% for skill in skills %}
-            <div class="skill-icon">{{ skill[0] }}</div> 
-          {% endfor %}
-        </div>
+      {% if experience and experience|length > 0 %}
+      <section class="card">
+        <h2>Work Experience</h2>
+        {% for job in experience %}
+          <div class="item">
+            <div class="item-header">
+              <h3>{{ job.role }}</h3>
+              <span class="meta">{{ job.company }} | {{ job.duration }}</span>
+            </div>
+            {% if job.responsibilities and job.responsibilities|length > 0 %}
+            <ul>
+              {% for resp in job.responsibilities %}
+                <li>{{ resp }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        {% endfor %}
       </section>
       {% endif %}
 
       {% if projects and projects|length > 0 %}
-      <section class="section" id="projects">
+      <section class="card">
+        <h2>Projects</h2>
         {% for project in projects %}
-          <div class="project-showcase {% if loop.index is divisibleby 2 %}reverse{% endif %}">
-            <div class="project-info">
-              <span class="badge">Featured Project</span>
+          <div class="item">
+            <div class="item-header">
               <h3>{{ project.title }}</h3>
-              <div class="glass-card project-desc">
-                <p>{{ project.description }}</p>
-              </div>
-              {% if project.technologies %}
-                <div class="tech-stack">
-                  {{ project.technologies | join(' · ') }}
-                </div>
-              {% endif %}
             </div>
-            <div class="project-image-placeholder">
-              <span>{{ project.title }} Preview</span>
+            <p>{{ project.description }}</p>
+            {% if project.technologies and project.technologies|length > 0 %}
+              <div class="tech-stack">
+                <small><strong>Technologies:</strong> {{ project.technologies | join(', ') }}</small>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if education and education|length > 0 %}
+      <section class="card">
+        <h2>Education</h2>
+        {% for edu in education %}
+          <div class="item">
+            <div class="item-header">
+              <h3>{{ edu.degree }}</h3>
+              <span class="meta">{{ edu.institution }} ({{ edu.year }})</span>
             </div>
           </div>
         {% endfor %}
       </section>
       {% endif %}
+
+      {% if achievements and achievements|length > 0 %}
+      <section class="card">
+        <h2>Achievements & Certifications</h2>
+        <ul>
+          {% for ach in achievements %}
+            <li>{{ ach }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
     </main>
 
     <footer>
-      <p>Contact</p>
-      {% if contact %}<p>{{ contact[0].value }}</p>{% endif %}
-      <div class="social-icons">
-        <i class="fab fa-github"></i>
-        <i class="fab fa-linkedin"></i>
-        <i class="fab fa-twitter"></i>
-      </div>
+      <p>Generated automatically with Python,Gemini API</p>
     </footer>
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-  <script>
-    VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
-      max: 10,
-      speed: 400,
-      glare: true,
-      "max-glare": 0.1
-    });
-  </script>
+  
 </body>
 </html>
