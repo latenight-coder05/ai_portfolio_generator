@@ -1,0 +1,42 @@
+Alex Developer
+Full-Stack Software Engineer & AI Enthusiast
+
+Contact Info:
+Email: alex.developer@example.com
+Phone: (555) 019-8372
+LinkedIn: linkedin.com/in/alexdeveloper
+GitHub: github.com/alexdev
+
+Professional Summary:
+Passionate and results-driven software engineer with over 2 years of experience building scalable web applications. Adept at Python, JavaScript, and integrating AI models into practical business solutions. Strong focus on writing clean code and improving user experiences.
+
+Skills:
+Python, JavaScript, HTML, CSS, SQL, Git, React, Flask, Gemini API, Azure, Docker.
+
+Experience:
+Software Developer - TechNova Solutions (June 2023 - Present)
+- Developed RESTful APIs using Python and Flask to support high-traffic web applications.
+- Integrated AI tools to automate data processing, reducing manual workflow time by 30%.
+- Collaborated with cross-functional teams to redesign the user dashboard.
+
+Web Development Intern - Creative Web Agency (Jan 2023 - May 2023)
+- Assisted in building responsive front-end interfaces using HTML, CSS, and React.
+- Fixed UI bugs and optimized page load speeds by 15%.
+- Participated in daily Agile stand-ups and weekly code reviews.
+
+Education:
+Bachelor of Science in Computer Science
+University of Technology (Graduated: May 2023)
+
+Projects:
+AI Portfolio Generator
+Built a Python CLI tool using the Gemini API to parse resumes into structured JSON and automatically generate HTML portfolios. 
+Technologies used: Python, Gemini API, Jinja2, HTML, CSS.
+
+Real-Time Metrics Dashboard
+Created a minimalist monitoring client displaying dynamic data visualizations and database metrics for local network servers.
+Technologies used: JavaScript, SQL, Python, Azure.
+
+Achievements:
+- 1st Place at University Hackathon 2023 for developing an AI-driven accessibility tool.
+- Microsoft Certified: Azure Fundamentals (AZ-900).

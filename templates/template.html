@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ name }} | Portfolio</title>
+  
+  <!-- Updated link for Flask to find style.css inside the static folder -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>{{ name }}</h1>
+      {% if headline %}<p class="headline">{{ headline }}</p>{% endif %}
+      {% if summary %}<p class="summary">{{ summary }}</p>{% endif %}
+      
+      {% if contact and contact|length > 0 %}
+      <div class="contact-links">
+        {% for item in contact %}
+          {% if item.url %}
+            <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.type }}: {{ item.value }}</a>
+          {% else %}
+            <span>{{ item.type }}: {{ item.value }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </header>
+
+    <main>
+      {% if skills and skills|length > 0 %}
+      <section class="card">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          {% for skill in skills %}
+            <span class="skill-tag">{{ skill }}</span>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      {% if experience and experience|length > 0 %}
+      <section class="card">
+        <h2>Work Experience</h2>
+        {% for job in experience %}
+          <div class="item">
+            <div class="item-header">
+              <h3>{{ job.role }}</h3>
+              <span class="meta">{{ job.company }} | {{ job.duration }}</span>
+            </div>
+            {% if job.responsibilities and job.responsibilities|length > 0 %}
+            <ul>
+              {% for resp in job.responsibilities %}
+                <li>{{ resp }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if projects and projects|length > 0 %}
+      <section class="card">
+        <h2>Projects</h2>
+        {% for project in projects %}
+          <div class="item">
+            <div class="item-header">
+              <h3>{{ project.title }}</h3>
+            </div>
+            <p>{{ project.description }}</p>
+            {% if project.technologies and project.technologies|length > 0 %}
+              <div class="tech-stack">
+                <small><strong>Technologies:</strong> {{ project.technologies | join(', ') }}</small>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if education and education|length > 0 %}
+      <section class="card">
+        <h2>Education</h2>
+        {% for edu in education %}
+          <div class="item">
+            <div class="item-header">
+              <h3>{{ edu.degree }}</h3>
+              <span class="meta">{{ edu.institution }} ({{ edu.year }})</span>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if achievements and achievements|length > 0 %}
+      <section class="card">
+        <h2>Achievements & Certifications</h2>
+        <ul>
+          {% for ach in achievements %}
+            <li>{{ ach }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+    </main>
+
+    <footer>
+      <p>Generated automatically with Python,Gemini API</p>
+    </footer>
+  </div>
+</body>
+</html>

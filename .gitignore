@@ -1,0 +1,13 @@
+# Environment variables (Crucial for API key security)
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+.venv/
+
+# Output files
+portfolio.html
