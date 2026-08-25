@@ -1,11 +1,5 @@
-Alex Developer
+Ram Mishra
 Full-Stack Software Engineer & AI Enthusiast
-
-Contact Info:
-Email: alex.developer@example.com
-Phone: (555) 019-8372
-LinkedIn: linkedin.com/in/alexdeveloper
-GitHub: github.com/alexdev
 
 Professional Summary:
 Passionate and results-driven software engineer with over 2 years of experience building scalable web applications. Adept at Python, JavaScript, and integrating AI models into practical business solutions. Strong focus on writing clean code and improving user experiences.
@@ -40,3 +34,9 @@ Technologies used: JavaScript, SQL, Python, Azure.
 Achievements:
 - 1st Place at University Hackathon 2023 for developing an AI-driven accessibility tool.
 - Microsoft Certified: Azure Fundamentals (AZ-900).
+
+Contact Info:
+Email: alex.developer@example.com
+Phone: (555) 019-8372
+LinkedIn: linkedin.com/in/alexdeveloper
+GitHub: github.com/alexdev

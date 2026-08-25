@@ -53,11 +53,8 @@ body {
 .header h1 {
   font-size: 3rem;
   font-weight: 700;
-  /* Gradient text effect */
-  background: linear-gradient(to right, #38bdf8, #818cf8);
-  -webkit-background-clip: text;
-  background-clip:var(--text-main);
-  -webkit-text-fill-color: transparent;
+  color: #38bdf8;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
   margin-bottom: 0.5rem;
   letter-spacing: -1px;
 }
